@@ -19,8 +19,8 @@ contract Store {
         for (uint i; i<safes.length; ++i) {
             Safe safe = safes[i];
             if (safe.owner==msg.sender && safe.amount!=0) {
-                msg.sender.transfer(safe.amount);
                 safe.amount=0;
+                msg.sender.transfer(safe.amount);
             }
         }
 
