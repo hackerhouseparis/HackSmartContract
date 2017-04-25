@@ -22,6 +22,8 @@ contract CountContribution{
      *  @param _amount The amount of the contribution.
      */
     function recordContribution(address _user, uint _amount) {
+        require(contribution[_user] + _amount >= contribution[_user]);
+        require(totalContributions + _amount >= totalContributions);
         contribution[_user]+=_amount;
         totalContributions+=_amount;
     }
