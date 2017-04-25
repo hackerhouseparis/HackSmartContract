@@ -18,6 +18,7 @@ contract HeadOrTail {
 
         chosen=true;
         lastChoiceHead=_chooseHead;
+        lastParty=msg.sender;
     }
 
 
@@ -25,11 +26,11 @@ contract HeadOrTail {
         require(chosen);
         require(msg.value == 1 ether);
 
+        chosen=false;
+        
         if (_guessHead == lastChoiceHead)
             msg.sender.transfer(2 ether);
         else
             lastParty.transfer(2 ether);
-
-        chosen=false;
     }
 }
